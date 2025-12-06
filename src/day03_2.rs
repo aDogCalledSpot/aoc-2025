@@ -17,8 +17,8 @@ fn max_joltage_for_line(line: &str) -> u64 {
     }
 
     for substr_len in 1..12 {
-        let mut next = vec![0; line.len()];
         let last_pos_for_substr_len = line.len() - substr_len - 1;
+        let mut next = vec![0; last_pos_for_substr_len + 1];
         next[last_pos_for_substr_len] =
             build_new_attempt_from_dp(line, last_pos_for_substr_len, substr_len, &prev);
         for pos in (0..last_pos_for_substr_len).rev() {
